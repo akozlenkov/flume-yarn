@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>flume-yarn</artifactId>
+        <groupId>ru.hh.flume-yarn</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>flume-yarn-package</artifactId>
+
+    <properties>
+        <dep.pkg.dir>${project.build.directory}/dep-package-tmp</dep.pkg.dir>
+        <dep.pkg.basename>flume-ng-dist-${flume.version}-bin</dep.pkg.basename>
+        <dep.pkg.name>${dep.pkg.basename}.tar.gz</dep.pkg.name>
+        <dep.pkg>${dep.pkg.dir}/${dep.pkg.name}</dep.pkg>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-dist</artifactId>
+            <version>${flume.version}</version>
+            <type>tar.gz</type>
+            <classifier>bin</classifier>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>flume-ng-dist</includeArtifactIds>
+                            <includeTypes>tar.gz</includeTypes>
+                            <excludeTransitive>true</excludeTransitive>
+                            <outputDirectory>${dep.pkg.dir}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptor>${project.basedir}/assembly.xml</descriptor>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <finalName>${app.package.name}</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-app-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

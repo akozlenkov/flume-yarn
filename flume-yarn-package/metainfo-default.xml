@@ -1,0 +1,32 @@
+<metainfo>
+    <schemaVersion>2.0</schemaVersion>
+    <application>
+        <name>FLUME</name>
+        <comment>Apache Flume</comment>
+        <version>${flume.version}</version>
+
+        <components>
+            <component>
+                <name>AGENT</name>
+                <commandScript>
+                    <script>scripts/flume.py</script>
+                    <scriptType>PYTHON</scriptType>
+                </commandScript>
+            </component>
+        </components>
+
+
+        <osSpecifics>
+            <osSpecific>
+                <osType>any</osType>
+                <packages>
+                    <package>
+                        <type>tarball</type>
+                        <name>files/${dep.pkg.name}</name>
+                    </package>
+                </packages>
+            </osSpecific>
+        </osSpecifics>
+
+    </application>
+</metainfo>

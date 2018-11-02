@@ -1,0 +1,22 @@
+{
+  "schema": "http://example.org/specification/v2.0.0",
+  "metadata": {
+  },
+  "global": {
+    "site.global.app_name": "apache-flume-${flume.version}-bin",
+    "site.global.flume_user": "nobody",
+    "site.global.flume_user_group": "nogroup",
+    "site.global.flume_agent": "a1",
+    "site.global.flume_zookeeper_quorum": "localhost:2181",
+    "site.global.flume_zookeeper_znode": "/flume",
+    "site.global.flume_java_opts": "-Xms100m -Xmx2000m -Dcom.sun.management.jmxremote -Dorg.apache.flume.log.printconfig=true",
+
+    "application.def": ".slider/package/FLUME/${app.package.name}.zip",
+    "java_home": "/usr/lib/jvm/java-8-oracle"
+  },
+  "components": {
+    "slider-appmaster": {
+      "jvm.heapsize": "128M"
+    }
+  }
+}

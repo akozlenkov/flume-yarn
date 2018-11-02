@@ -1,0 +1,62 @@
+<assembly
+        xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+    <id>koya</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <files>
+        <file>
+            <source>metainfo-default.xml</source>
+            <destName>metainfo.xml</destName>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>0755</fileMode>
+        </file>
+        <file>
+            <source>appConfig-default.json</source>
+            <destName>appConfig.json</destName>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>0755</fileMode>
+        </file>
+        <file>
+            <source>resources-default.json</source>
+            <destName>resources.json</destName>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+            <fileMode>0755</fileMode>
+        </file>
+        <file>
+            <source>${dep.pkg}</source>
+            <destName>${dep.pkg.name}</destName>
+            <outputDirectory>/package/files/</outputDirectory>
+            <fileMode>0755</fileMode>
+        </file>
+    </files>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}</directory>
+            <outputDirectory>/</outputDirectory>
+            <excludes>
+                <exclude>pom.xml</exclude>
+                <exclude>assembly.xml</exclude>
+                <exclude>src/**</exclude>
+                <exclude>target/**</exclude>
+                <exclude>package/files/**</exclude>
+                <exclude>appConfig-default.json</exclude>
+                <exclude>resources-default.json</exclude>
+                <exclude>metainfo-default.xml</exclude>
+                <exclude>*.iml</exclude>
+                <exclude>.*</exclude>
+                <exclude>.*/**</exclude>
+            </excludes>
+            <fileMode>0755</fileMode>
+            <directoryMode>0755</directoryMode>
+        </fileSet>
+    </fileSets>
+</assembly>

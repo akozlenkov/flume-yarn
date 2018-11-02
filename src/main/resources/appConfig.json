@@ -1,0 +1,22 @@
+{
+  "schema": "http://example.org/specification/v2.0.0",
+  "metadata": {
+  },
+  "global": {
+    "site.global.app_name": "apache-flume-1.8.0-bin",
+    "site.global.flume_user": "nobody",
+    "site.global.flume_user_group": "nogroup",
+    "site.global.flume_agent": "api_agent",
+    "site.global.flume_zookeeper_quorum": "hadoop17.hhnet.ru:2181,hadoop19.hhnet.ru:2181,hadoop30.hhnet.ru:2181",
+    "site.global.flume_zookeeper_znode": "/flume",
+    "site.global.flume_java_opts": "-Xms100m -Xmx2000m -Dcom.sun.management.jmxremote -Dorg.apache.flume.log.printconfig=true",
+
+    "application.def": ".slider/package/FLUME/flume-yarn-package-0.0.1-1.8.0.zip",
+    "java_home": "/usr/lib/jvm/java-8-oracle"
+  },
+  "components": {
+    "slider-appmaster": {
+      "jvm.heapsize": "128M"
+    }
+  }
+}

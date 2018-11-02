@@ -1,0 +1,62 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+    <id>install</id>
+    <baseDirectory>/</baseDirectory>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+
+    <fileSets>
+        <fileSet>
+            <directory>${slider.dir}/package</directory>
+            <outputDirectory>package</outputDirectory>
+        </fileSet>
+    </fileSets>
+<!--
+    <files>
+        <file>
+            <source>${resources.dir}/metainfo.xml</source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>${resources.dir}/appConfig.json</source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+            <destName>appConfig-default.json</destName>
+        </file>
+        <file>
+            <source>${resources.dir}/resources.json</source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+            <destName>resources-default.json</destName>
+        </file>
+    </files>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>package/files</outputDirectory>
+            <fileMode>0755</fileMode>
+            <directoryMode>0755</directoryMode>
+            <includes>
+                <include>*.tar.gz</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+    -->
+    <!--
+    <files>
+        <file>
+            <source>${project.build.directory}</source>
+            <outputDirectory>package/files</outputDirectory>
+            <filtered>false</filtered>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>*.tar.gz</include>
+            </includes>
+        </file>
+    </files>
+    -->
+</assembly>
